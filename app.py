@@ -5,38 +5,38 @@ import mysql.connector
 
 app = Flask(__name__, static_folder="assets", template_folder="templates")
 
-#myconn = mysql.connector.connect(host = "13.50.210.144", user = "admin",passwd = "12345678",database = "db1")
-#curr = myconn.cursor()
+myconn = mysql.connector.connect(host = "13.50.210.144", user = "admin",passwd = "12345678",database = "db1")
+curr = myconn.cursor()
 
 
 @app.route("/")
 def k():
 	return render_template("index.html")
 
-# @app.route("/<a>")
-# def k1(a):
-# 	t=a+".html"
-# 	return render_template(t)
+@app.route("/<a>")
+def k1(a):
+	t=a+".html"
+	return render_template(t)
 
-# @app.route("/submit",methods=["POST"])
-# def k2():
-# 	k="\n\nEmail: "+request.form["email"]+"\nName: "+request.form["name"]+"\nPhone number: "+request.form["phone"]+"\nMessage: "+request.form["message"]
-# 	print(k)
-# 	name = request.form["name"]
-# 	email = request.form['email']
-# 	phonenumber = request.form['phone']
-# 	message = request.form['message']
-# 	try:
-# 		insert_stmt = (
-#    "INSERT INTO INFO(_NAME, _EMAIL, _PHONENUMBER, _MESSAGE)"
-#    "VALUES (%s, %s, %s, %s)")
-# 		data = (name,email,phonenumber,message)
-# 		curr.execute(insert_stmt,data)
-# 		myconn.commit()
-# 	except:
-# 		print("Error Occured")
+@app.route("/submit",methods=["POST"])
+def k2():
+	k="\n\nEmail: "+request.form["email"]+"\nName: "+request.form["name"]+"\nPhone number: "+request.form["phone"]+"\nMessage: "+request.form["message"]
+	print(k)
+	name = request.form["name"]
+	email = request.form['email']
+	phonenumber = request.form['phone']
+	message = request.form['message']
+	try:
+		insert_stmt = (
+   "INSERT INTO INFO(_NAME, _EMAIL, _PHONENUMBER, _MESSAGE)"
+   "VALUES (%s, %s, %s, %s)")
+		data = (name,email,phonenumber,message)
+		curr.execute(insert_stmt,data)
+		myconn.commit()
+	except:
+		print("Error Occured")
 	
-# 	return render_template("contact.html")
+	return render_template("contact.html")
 
 # @app.errorhandler(404)
 # def k3():
@@ -51,5 +51,5 @@ def k():
 # 	return "<h1>Hello World</h1>"
 
 if __name__ == '__main__':
-	# app.run(host = "0.0.0.0",port = 8080)
-	app.run(debug = True)
+	app.run(host = "0.0.0.0",port = 8080)
+# 	app.run(debug = True)
