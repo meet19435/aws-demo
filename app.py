@@ -1,8 +1,13 @@
 from flask import*
 from flask import render_template
-import requests
+import mysql.connector
+
 
 app = Flask(__name__, static_folder="assets", template_folder="templates")
+
+myconn = mysql.connector.connect(host = "13.50.210.144", user = "admin",passwd = "12345678",database = "db1")
+curr = myconn.cursor()
+
 
 @app.route("/")
 def k():
@@ -17,6 +22,20 @@ def k1(a):
 def k2():
 	k="\n\nEmail: "+request.form["email"]+"\nName: "+request.form["name"]+"\nPhone number: "+request.form["phone"]+"\nMessage: "+request.form["message"]
 	print(k)
+	name = request.form["name"]
+	email = request.form['email']
+	phonenumber = request.form['phone']
+	message = request.form['message']
+	try:
+		insert_stmt = (
+   "INSERT INTO INFO(_NAME, _EMAIL, _PHONENUMBER, _MESSAGE)"
+   "VALUES (%s, %s, %s, %s)")
+		data = (name,email,phonenumber,message)
+		curr.execute(insert_stmt,data)
+		myconn.commit()
+	except:
+		print("Error Occured")
+	
 	return render_template("contact.html")
 
 # @app.errorhandler(404)
@@ -32,4 +51,5 @@ def k2():
 # 	return "<h1>Hello World</h1>"
 
 if __name__ == '__main__':
-	app.run(host = "0.0.0.0",port = 8080)
+	# app.run(host = "0.0.0.0",port = 8080)
+	app.run(debug = True)
