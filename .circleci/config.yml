@@ -9,28 +9,9 @@ jobs:
       - checkout
       - docker/install-docker-compose
       - run: docker-compose up -d
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-  test:
-    machine:
-      image: ubuntu-2004:202010-01
-    steps:
-      - attach_workspace:
-          at: .
-      - checkout
       - run: make test
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .
-    
 
 workflows:
   build_test_deploy:
     jobs:
       - build
-      - test:
-          requires:
-            - build
