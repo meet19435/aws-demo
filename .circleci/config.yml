@@ -20,7 +20,7 @@ jobs:
       - attach_workspace:
           at: .
       - checkout
-      - run: cd ./app && poetry run pytest
+      - run: make test
       - persist_to_workspace:
           root: .
           paths:

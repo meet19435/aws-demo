@@ -7,3 +7,4 @@ COPY . .
 RUN pip install poetry
 RUN poetry install -vvv --no-dev
 RUN poetry run playwright install
+RUN poetry run playwright install-deps 
