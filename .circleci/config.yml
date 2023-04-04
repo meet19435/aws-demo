@@ -2,11 +2,6 @@ version: 2.1
 orbs:
   docker: circleci/docker@2.2.0
 jobs:
-  example-job:
-    docker:
-      - image: ubuntu-2004:202010-01
-    steps:
-      - 
   build:
     machine:
       image: ubuntu-2004:202010-01
