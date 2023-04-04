@@ -2,18 +2,13 @@ version: 2.1
 orbs:
   docker: circleci/docker@2.2.0
 jobs:
-  example-job:
-    docker:
-      - image: ubuntu-2004:202010-01
-    steps:
-      - 
   build:
     machine:
       image: ubuntu-2004:202010-01
     steps:
       - checkout
       - docker/install-docker-compose
-      - run: docker-copose up
+      - run: docker-compose up
       - persist_to_workspace:
           root: .
           paths:
