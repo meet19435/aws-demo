@@ -4,8 +4,6 @@ FROM python:3.8
 RUN mkdir flask-app
 WORKDIR /flask-app
 COPY . .
-RUN apt-get install xauth
 RUN pip install poetry
 RUN poetry install -vvv --no-dev
-RUN poetry run playwright install
-RUN poetry run playwright install-deps 
+RUN poetry run playwright install --with-deps
