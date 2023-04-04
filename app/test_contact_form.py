@@ -5,7 +5,7 @@ def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
-    page.goto("http://172.20.0.3:8080/")
+    page.goto("http://172.18.0.3:8080/")
     page.get_by_role("link", name="Contact").click()
     page.locator("input[name=\"name\"]").click()
     page.locator("input[name=\"name\"]").fill("test")
