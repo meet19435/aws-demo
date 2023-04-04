@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   docker: circleci/docker@2.2.0
 jobs:
-  build:
+  test:
     machine:
       image: ubuntu-2004:202010-01
     steps:
@@ -12,6 +12,6 @@ jobs:
       - run: make test
 
 workflows:
-  build_test_deploy:
+  integration_tests:
     jobs:
-      - build
+      - test
