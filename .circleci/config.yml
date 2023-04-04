@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout
       - docker/install-docker-compose
-      - run: docker-copose up
+      - run: docker-compose up -d
       - persist_to_workspace:
           root: .
           paths:
