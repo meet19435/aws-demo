@@ -9,7 +9,7 @@ jobs:
       - checkout
       - docker/install-docker-compose
       - run: docker-compose up -d
-      - run: make test
+      - run: bash test.sh
 
 workflows:
   integration_tests:
