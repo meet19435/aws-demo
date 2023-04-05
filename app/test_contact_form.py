@@ -8,7 +8,7 @@ def run(playwright: Playwright) -> None:
     page = context.new_page()
     ip ="http://localhost:8080/"
     print(ip)
-    page.goto(ip)
+    page.goto(ip, timeout = 0)
     page.get_by_role("link", name="Contact").click()
     page.locator("input[name=\"name\"]").click()
     page.locator("input[name=\"name\"]").fill("test")
