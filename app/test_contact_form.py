@@ -3,15 +3,16 @@ from playwright.sync_api import Playwright, sync_playwright, expect
 
 
 def run(playwright: Playwright) -> None:
-    f = open("container_ip.txt", "r")
-    contianer_ip = f.read()
-    f.close()
-    print(contianer_ip)
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
     print(page)
-    ip ="http://"+contianer_ip+":8080/"
+    f = open("container_ip.txt", "r")
+    DOCKER_FLASK_IP = f.read()
+    f.close()
+    DOCKER_FLASK_IP = DOCKER_FLASK_IP.strip()
+    print(DOCKER_FLASK_IP)
+    ip ="http://"+DOCKER_FLASK_IP+":8080/"
     print(ip)
     page.goto(ip)
     page.get_by_role("link", name="Contact").click()
