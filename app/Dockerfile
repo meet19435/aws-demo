@@ -6,4 +6,3 @@ WORKDIR /flask-app
 COPY . .
 RUN pip install poetry
 RUN poetry install -vvv --no-dev
-RUN poetry run playwright install --with-deps

@@ -6,7 +6,10 @@ def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
-    ip ="http://localhost:8080/"
+    f = open('container_ip.txt', 'r')
+    cip = f.read().strip()
+    f.close()
+    ip ="http://"+cip+":8080/"
     print(ip)
     page.goto(ip, timeout = 60*1000*3)
     page.get_by_role("link", name="Contact").click()
