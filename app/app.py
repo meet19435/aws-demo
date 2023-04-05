@@ -2,10 +2,9 @@ from flask import*
 from flask import render_template
 import mysql.connector
 
-
 app = Flask(__name__, static_folder="assets", template_folder="templates")
 
-myconn = mysql.connector.connect(host = "13.50.210.144", user = "admin",passwd = "12345678",database = "db1")
+myconn = mysql.connector.connect(host = "mysql", user = "root",password = "root",database = "db", port = "3306")
 curr = myconn.cursor()
 
 
