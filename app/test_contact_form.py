@@ -9,8 +9,6 @@ def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=True)
     context = browser.new_context()
     page = context.new_page()
-    contianer_ip =  os.environ.get('DOCKER_FLASK_IP')
-    print(contianer_ip)
     page.goto("http://"+contianer_ip+":8080/")
     page.get_by_role("link", name="Contact").click()
     page.locator("input[name=\"name\"]").click()
