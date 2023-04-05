@@ -11,4 +11,5 @@ export DOCKER_FLASK_IP="$CONTAINER_IP"
 
 # Display the environment variable
 echo "$CONTAINER_IP" > container_ip.txt
+echo "$CONTAINER_IP"
 sudo docker exec $(sudo docker ps -aqf "name=project-pythonapp") poetry run pytest
