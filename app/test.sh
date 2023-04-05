@@ -7,6 +7,6 @@ CONTAINER_ID=$(docker ps -aqf "name=project-pythonapp")
 CONTAINER_IP=$(docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $CONTAINER_ID)
 
 # Display the environment variable
-docker exec $CONTAINER_ID sh -c 'echo "$CONTAINER_IP" > container_ip.txt'
+docker exec $CONTAINER_ID sh -c "echo \"$CONTAINER_IP\" > container_ip.txt"
 docker exec $CONTAINER_ID cat container_ip.txt
 docker exec $CONTAINER_ID poetry run pytest
