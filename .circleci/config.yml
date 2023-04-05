@@ -10,11 +10,9 @@ jobs:
       - docker/install-docker-compose
       - run: docker-compose up -d
       - run: pip install poetry
-      - run: cd app/
-      - run: poetry install
-      - run: poetry run playwright install --with-deps
-      - run: bash test.sh
-      - run: poetry run pytest
+      - run: cd app/ && poetry  install && poetry run playwright install --with-deps
+      - run: cd app/ bash test.sh
+      - run: cd app/ poetry run pytest
 
 workflows:
   integration_tests:
